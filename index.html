@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>corgi demo</title>
+    <title>call my sister borrow</title>
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
@@ -73,7 +73,7 @@
             <div class="col">
             </div>
             <div class="col-auto css-title">
-              <h2>科基登記機</h2>
+              <h2>Graykey 登記機</h2>
               <div class="col-auto css-titleText">
                 <span id="headNameHelpInline" class="form-text css-titleText">
                   請在下方登記使用資訊
@@ -88,7 +88,7 @@
   <body>
     
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-    <div class="container px-4 text-center">
+    <div class="container px-4 text-center was-validated">
       <div class="row px-5">
         <div class="col-6">
           <div class="row align-items-center">
@@ -96,7 +96,7 @@
               <label for="inputName" class="col-form-label css-titleText">使用者姓名</label>
             </div>
             <div class="col-auto">
-              <input type="text" id="inputName" class="form-control" aria-labelledby="NameHelpInline">
+              <input type="text" id="inputName" class="form-control" aria-labelledby="NameHelpInline" pattern="^[\p{Script=Han}]{2:3}$" required>
             </div>
             <div class="col-auto">
               <span id="NameHelpInline" class="form-text">
@@ -116,12 +116,12 @@
               <label for="inputCaseNum" class="col-form-label css-titleText">案件號碼</label>
             </div>
             <div class="col-auto">
-              <input type="text" id="inputCaseNum" class="form-control" aria-labelledby="caseNameHelpInline">
+              <input type="text" id="inputCaseNum" class="form-control is-invalid" aria-labelledby="caseNameHelpInline" pattern="^\d{9}$" required>
             </div>
             <div class="col-auto">
               <span id="caseNameHelpInline" class="form-text">
                 請輸入完整案件編號
-                ex.11270802200
+                ex.112050218
               </span>
             </div>
           </div>
@@ -133,7 +133,7 @@
                 <label for="inputEvdNum" class="col-form-label css-titleText">證物編號</label>
               </div>
               <div class="col-auto">
-                <input type="text" id="inputEvdNum" class="form-control" aria-labelledby="evdtNameHelpInline">
+                <input type="text" id="inputEvdNum" class="form-control is-invalid" aria-labelledby="evdtNameHelpInline" pattern="^\d{4}$" required>
               </div>
               <div class="col-auto">
                 <span id="evdtNameHelpInline" class="form-text">
@@ -154,26 +154,26 @@
               <label for="CaseCheckForm" class="col-form-label css-titleText">案件類型</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="一般登記">
-              <label class="form-check-label css-text" for="flexRadioDefault1">
+              <input class="form-check-input" type="radio" name="radio-stacked" id="一般登記" required>
+              <label class="form-check-label css-text" for="一般登記">
                 一般登記
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="緊急案件">
-              <label class="form-check-label css-text" for="flexRadioDefault1">
+              <input class="form-check-input" type="radio" name="radio-stacked" id="緊急案件" required>
+              <label class="form-check-label css-text" for="緊急案件">
                 緊急案件
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="夜間使用">
-              <label class="form-check-label css-text" for="flexRadioDefault1">
+              <input class="form-check-input" type="radio" name="radio-stacked" id="夜間使用" required>
+              <label class="form-check-label css-text" for="夜間使用">
                 夜間使用
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="flexRadioDefault" id="取消登記">
-              <label class="form-check-label css-text" for="flexRadioDefault2">
+              <input class="form-check-input" type="radio" name="radio-stacked" id="取消登記" required>
+              <label class="form-check-label css-text" for="取消登記">
                 取消登記
               </label>
             </div>
@@ -185,7 +185,7 @@
           
         </div>
 
-        <div class="row px-0 py-4">
+        <div class="row px-0 py-3">
           <div class="col-auto">
             <div class="col-auto">
               <button type="submit" class="btn btn-primary css-button" id="submitButton">提交</button>
