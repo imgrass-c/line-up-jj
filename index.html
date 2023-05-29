@@ -210,21 +210,19 @@
     
     function time_trans(){
       // 原始日期字符串
-      var dateString = '2023年05月29日上午10点51分';
+      ㄒ// 日期模板
+      var template = 'YYYY年MM月DD日上午HH点mm分';
 
-      // 使用正则表达式提取年、月、日、小时和分钟
-      var regex = /(\d{4})年(\d{2})月(\d{2})日上午(\d{2})点(\d{2})分/;
-      var match = regex.exec(dateString);
+      // 获取当前日期时间
+      var currentDate = new Date();
 
-      // 提取各个日期时间组成部分
-      var year = parseInt(match[1]);
-      var month = parseInt(match[2]) - 1; // 月份在 JavaScript 中从 0 开始，所以要减去 1
-      var day = parseInt(match[3]);
-      var hour = parseInt(match[4]);
-      var minute = parseInt(match[5]);
-
-      // 使用 Date 对象创建日期
-      var date = new Date(year, month, day, hour, minute);
+      // 替换模板中的占位符
+      var formattedDate = template
+        .replace('YYYY', currentDate.getFullYear())
+        .replace('MM', ('0' + (currentDate.getMonth() + 1)).slice(-2))
+        .replace('DD', ('0' + currentDate.getDate()).slice(-2))
+        .replace('HH', ('0' + currentDate.getHours()).slice(-2))
+        .replace('mm', ('0' + currentDate.getMinutes()).slice(-2));
 
       return date
     }
