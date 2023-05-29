@@ -208,13 +208,35 @@
   </body>
   <script>
     
+    function time_trans(){
+      // 原始日期字符串
+      var dateString = '2023年05月29日上午10点51分';
+
+      // 使用正则表达式提取年、月、日、小时和分钟
+      var regex = /(\d{4})年(\d{2})月(\d{2})日上午(\d{2})点(\d{2})分/;
+      var match = regex.exec(dateString);
+
+      // 提取各个日期时间组成部分
+      var year = parseInt(match[1]);
+      var month = parseInt(match[2]) - 1; // 月份在 JavaScript 中从 0 开始，所以要减去 1
+      var day = parseInt(match[3]);
+      var hour = parseInt(match[4]);
+      var minute = parseInt(match[5]);
+
+      // 使用 Date 对象创建日期
+      var date = new Date(year, month, day, hour, minute);
+
+      return date
+    }
+
+
     var sub = document.querySelector("#submitButton");
     $("#submitButton").click(function(){
         var inputname = document.querySelector("#inputName").value;
         var inputcasenum = document.querySelector("#inputCaseNum").value;
         var inputevdnum = document.querySelector("#inputEvdNum").value;
         var inputcheck = document.querySelector(".form-check-input:checked").id;
-        var datetime = Date();
+        var datetime = time_trans();
 
 
 
