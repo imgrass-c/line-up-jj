@@ -99,8 +99,47 @@
               <input type="text" id="inputName" class="form-control" aria-labelledby="NameHelpInline" pattern="^[\p{Script=Han}]{2:3}$" required>
             </div>
             <div class="col-auto">
-              <span id="NameHelpInline" class="form-text">
-              </span>
+              <select class="form-select" aria-label="Default select example">
+                <option selected>選擇你的名字</option>
+                <option value="林建均">林建均</option>
+                <option value="陳世峰">陳世峰</option>
+                <option value="陳建成">陳建成</option>
+                <option value="林鈺燕">林鈺燕</option>
+                <option value="李枝祝">李枝祝</option>
+                <option value="許令">許令</option>
+                <option value="翁瑞昇">翁瑞昇</option>
+                <option value="郭謹樺">郭謹樺</option>
+                <option value="易敬棠">易敬棠</option>
+                <option value="吳欣儒">吳欣儒</option>
+                <option value="林睦祥">林睦祥</option>
+                <option value="郭鑑倫">郭鑑倫</option>
+                <option value="莊宗翰">莊宗翰</option>
+                <option value="陳卓揚">陳卓揚</option>
+                <option value="郭志傑">郭志傑</option>
+                <option value="劉進偉">劉進偉</option>
+                <option value="朱子賢">朱子賢</option>
+                <option value="張瑈洹">張瑈洹</option>
+                <option value="林亭穎">林亭穎</option>
+                <option value="林建志">林建志</option>
+                <option value="蔡孟岳">蔡孟岳</option>
+                <option value="廖家煌">廖家煌</option>
+                <option value="黃柏勳">黃柏勳</option>
+                <option value="廖偉翰">廖偉翰</option>
+                <option value="林宣">林宣</option>
+                <option value="蔡妙玄">蔡妙玄</option>
+                <option value="李騏昇">李騏昇</option>
+                <option value="李秋頤">李秋頤</option>
+                <option value="侯俊福">侯俊福</option>
+                <option value="張珮逸">張珮逸</option>
+                <option value="王淑芬">王淑芬</option>
+                <option value="吳計衝">吳計衝</option>
+                <option value="郭值毓">郭值毓</option>
+                <option value="張定家">張定家</option>
+                <option value="陳珉珉">陳珉珉</option>
+                <option value="鄭祺">鄭祺</option>
+                <option value="鄔顯釗">鄔顯釗</option>
+                <option value="尤家妤">尤家妤</option>
+              </select>
             </div>
           </div>
         </div>
@@ -210,7 +249,7 @@
     
     function time_trans(){
       // 原始日期字符串
-      ㄒ// 日期模板
+      // 日期模板
       var template = 'YYYY年MM月DD日上午HH点mm分';
 
       // 获取当前日期时间
@@ -224,7 +263,7 @@
         .replace('HH', ('0' + currentDate.getHours()).slice(-2))
         .replace('mm', ('0' + currentDate.getMinutes()).slice(-2));
 
-      return date
+      return formattedDate
     }
 
 
