@@ -19,6 +19,10 @@
         font-size: 16px;
       }
 
+      .form-select{
+        width: 210px;
+      }
+
 
       .css-text{
         
@@ -66,6 +70,10 @@
         margin: 5px;
         font-size: 14px;
       }
+
+      .btn btn-secondary css-button{
+        width: auto;
+      }
       
     </style>
         <div class="container text-center" id="headtittle" style="padding: 20px">
@@ -91,13 +99,14 @@
     <div class="container px-4 text-center was-validated">
       <div class="row px-5">
         <div class="col-6">
-          <div class="row align-items-center">
+          <div class="row align-items-center  was-validated">
             <div class="col-auto">
               <label for="form-select" class="col-form-label css-titleText">使用者姓名</label>
             </div>
+            
             <div class="col-auto">
-              <select class="form-select" aria-label="Default select example">
-                <option selected>選擇你的名字</option>
+              <select class="form-select" required aria-label="select example">
+                <option value="" required>選擇名字</option>
                 <option value="林建均">林建均</option>
                 <option value="陳世峰">陳世峰</option>
                 <option value="陳建成">陳建成</option>
@@ -137,6 +146,7 @@
                 <option value="鄔顯釗">鄔顯釗</option>
                 <option value="尤家妤">尤家妤</option>
               </select>
+              
             </div>
           </div>
         </div>
@@ -247,7 +257,7 @@
     function time_trans(){
       // 原始日期字符串
       // 日期模板
-      var template = 'YYYY年MM月DD日上午HH点mm分';
+      var template = 'YYYY年MM月DD日上午HH時mm分';
 
       // 获取当前日期时间
       var currentDate = new Date();
@@ -266,7 +276,7 @@
 
     var sub = document.querySelector("#submitButton");
     $("#submitButton").click(function(){
-        var inputname = document.querySelector("#inputName").value;
+        var inputname = document.querySelector(".form-select").value;
         var inputcasenum = document.querySelector("#inputCaseNum").value;
         var inputevdnum = document.querySelector("#inputEvdNum").value;
         var inputcheck = document.querySelector(".form-check-input:checked").id;
