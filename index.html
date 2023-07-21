@@ -105,7 +105,7 @@
               <label for="form-select" class="col-form-label css-titleText">任務副本</label>
             </div>
             <div class="col-auto">
-              <select class="form-select" required aria-label="select example">
+              <select class="form-select" id="misson-form" required aria-label="select example">
                 <option value="" required>選擇任務</option>
                 <option value="Graykey">Graykey</option>
                 <option value="UFED PMS">UFED PMS</option>
@@ -118,7 +118,7 @@
             </div>
             
             <div class="col-auto">
-              <select class="form-select" required aria-label="select example">
+              <select class="form-select" id= "name-form" required aria-label="select example">
                 <option value="" required>選擇名字</option>
                 <option value="林建均">林建均</option>
                 <option value="陳世峰">陳世峰</option>
@@ -298,7 +298,8 @@
 
     var sub = document.querySelector("#submitButton");
     $("#submitButton").click(function(){
-        var inputname = document.querySelector(".form-select").value;
+        var missonname = document.querySelector("#misson-form").value
+        var inputname = document.querySelector("#name-form").value;
         var inputcasenum = document.querySelector("#inputCaseNum").value;
         var inputevdnum = document.querySelector("#inputEvdNum").value;
         var inputcheck = document.querySelector(".form-check-input:checked").id;
@@ -315,7 +316,7 @@
 
               data: {
 
-                  
+                  "misson": missonname,
                   "name": inputname,
                   "case_num": inputcasenum,
                   "evd_num": inputevdnum,
