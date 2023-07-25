@@ -107,8 +107,8 @@
             <div class="col-auto">
               <select class="form-select" id="misson-form" required aria-label="select example">
                 <option value="" required>選擇任務</option>
-                <option value="Graykey">Graykey</option>
-                <option value="UFED PMS">UFED PMS</option>
+                <option value="GK">Graykey</option>
+                <option value="PMS">UFED PMS</option>
               </select>
             </div>
           </div>
@@ -196,7 +196,7 @@
               </div>
               <div class="col-auto">
                 <span id="evdtNameHelpInline" class="form-text">
-                  輸入證物末四碼 多項請以空白或符號分隔
+                  輸入證物末4碼 多項請以空白分隔 3碼前方補0
                   ex.0123 9453 5208
                 </span>
               </div>
@@ -213,32 +213,32 @@
               <label for="CaseCheckForm" class="col-form-label css-titleText">案件類型</label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="radio-stacked" id="一般登記" required>
-              <label class="form-check-label css-text" for="一般登記">
+              <input class="form-check-input" type="radio" name="radio-stacked" id="一般登記" value="common"required>
+              <label class="form-check-label css-text"  for="一般登記">
                 一般登記
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="radio-stacked" id="緊急案件" required>
-              <label class="form-check-label css-text" for="緊急案件">
+              <input class="form-check-input" type="radio" name="radio-stacked" id="緊急案件" value="urgent"required>
+              <label class="form-check-label css-text"  for="緊急案件">
                 緊急案件
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="radio-stacked" id="夜間使用" required>
-              <label class="form-check-label css-text" for="夜間使用">
+              <input class="form-check-input" type="radio" name="radio-stacked" id="夜間使用" value="night"required>
+              <label class="form-check-label css-text"  for="夜間使用">
                 夜間使用
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="radio-stacked" id="假期登記" required>
-              <label class="form-check-label css-text" for="假期登記">
+              <input class="form-check-input" type="radio" name="radio-stacked" id="假期登記" value="holiday"required>
+              <label class="form-check-label css-text"  for="假期登記">
                 假期登記
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="radio-stacked" id="取消登記" required>
-              <label class="form-check-label css-text" for="取消登記">
+              <input class="form-check-input" type="radio" name="radio-stacked" id="取消登記" value="cancel"required>
+              <label class="form-check-label css-text"  for="取消登記">
                 取消登記
               </label>
             </div>
@@ -273,28 +273,23 @@
   </body>
   <script>
     let casePattern = /^\d{9}$/;
+    let evdPattern = /^\d{4}.+$/;
     
 
     
-    function time_trans(){
-      // 原始日期字符串
-      // 日期模板
-      var template = 'YYYY年MM月DD日上午HH時mm分';
+    function getCurrentDateTime() {
+      const now = new Date();
 
-      // 獲取日期時間
-      var currentDate = new Date();
+      const year = now.getFullYear().toString().padStart(4, '0');
+      const month = (now.getMonth() + 1).toString().padStart(2, '0');
+      const date = now.getDate().toString().padStart(2, '0');
 
-      // 替换模板中的符號
-      var formattedDate = template
-        .replace('YYYY', currentDate.getFullYear())
-        .replace('MM', ('0' + (currentDate.getMonth() + 1)).slice(-2))
-        .replace('DD', ('0' + currentDate.getDate()).slice(-2))
-        .replace('HH', ('0' + currentDate.getHours()).slice(-2))
-        .replace('mm', ('0' + currentDate.getMinutes()).slice(-2));
+      const hours = now.getHours().toString().padStart(2, '0');
+      const minutes = now.getMinutes().toString().padStart(2, '0');
+      const seconds = now.getSeconds().toString().padStart(2, '0');
 
-      return formattedDate
+      return `${year}/${month}/${date}T${hours}:${minutes}:${seconds}`;
     }
-
 
     var sub = document.querySelector("#submitButton");
     $("#submitButton").click(function(){
@@ -302,8 +297,8 @@
         var inputname = document.querySelector("#name-form").value;
         var inputcasenum = document.querySelector("#inputCaseNum").value;
         var inputevdnum = document.querySelector("#inputEvdNum").value;
-        var inputcheck = document.querySelector(".form-check-input:checked").id;
-        var datetime = time_trans();
+        var inputcheck = document.querySelector(".form-check-input:checked").value;
+        var datetime = getCurrentDateTime();
 
         if (casePattern.test(inputcasenum) != true ){
           alert("你輸入的有錯誤");
@@ -311,17 +306,17 @@
         else{
           $.ajax({
 
-              url: "https://script.google.com/macros/s/AKfycbxAQvyza044757Y5tQKam1qQ-JLsulYuugokqFHsjrAcRGC_xqgUkv_3AzfO7RuQG7gQA/exec",
+              url: "https://script.google.com/macros/s/AKfycbz9KdrfE2_W1A1XDEuX9iq1is8NIYHDLo7gYZNi7e9hZT2Hnsa4c0c_RkwA9K8662tx8A/exec",
 
 
               data: {
 
-                  "misson": missonname,
-                  "name": inputname,
-                  "case_num": inputcasenum,
-                  "evd_num": inputevdnum,
-                  "input_check": inputcheck,
-                  "current_date": datetime
+                  "tool": missonname,
+                  "user": inputname,
+                  "caseNum": inputcasenum,
+                  "evidenceNums": inputevdnum,
+                  "act": inputcheck,
+                  "timestamp": datetime
 
                   
                 
@@ -335,18 +330,18 @@
               },
               error: function(){alert("失敗！")}
 
-              liff.init(function (data) {  //初始化LIFF
-			          initializeApp(data);
-		          });
+              // liff.init(function (data) {  //初始化LIFF
+			        //   initializeApp(data);
+		          // });
 
-              liff.sendMessages([  //推播訊息
-                { type: 'text',
-                  text: '@更新資料'
-                }
-              ])
-                .then(() => {
-                  liff.closeWindow();  //關閉視窗
-                });
+              // liff.sendMessages([  //推播訊息
+              //   { type: 'text',
+              //     text: '@更新資料'
+              //   }
+              // ])
+              //   .then(() => {
+              //     liff.closeWindow();  //關閉視窗
+              //   });
 
               });
         }
